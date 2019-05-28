@@ -1,0 +1,70 @@
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='skeleton.css') }}">
+        <title>Nested FieldList bug reproduction</title>
+    </head>
+    <body class="container">
+
+      <form action="{{ url_for('index') }}" method="POST" name="select_recipients" novalidate="">
+
+      <fieldset class="fieldset" aria-describedby="select-recipients-hint">
+        <legend class="fieldset__legend fieldset__legend--l">
+          <h1 class="fieldset__heading">
+            Confirm recipient names and addresses
+          </h1>
+        </legend>
+        <span id="select-recipients-hint" class="hint">
+          Select recipients and addresses. Check addresses are correct.
+        </span>
+      </fieldset>
+
+        {{ form.hidden_tag() }}
+
+        <h2 class="heading-m">
+          Recipients
+        </h2>
+
+        {% for proprietor in form['proprietors'] %}
+
+          <div class="row">
+            <div class="four columns">
+              {{ proprietor.prop_name() }}
+            </div>
+            <div class="eight columns">
+              {% for address in proprietor['addresses'] %}
+
+                <div class="row">
+                  {{ address.address_type() }}
+
+                  <div class="one columns">
+                    {{ address['address_type'].data.data }}
+                  </div>
+
+                  <div class="nine columns">
+                    {{ address.address() }}
+                  </div>
+                </div>
+
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row">
+            <div class="twelve columns">
+              <hr />
+            </div>
+          </div>
+
+        {% endfor %}
+
+        <div class="row">
+          <div class="offset-by-five columns">
+            {{ form.submit_button() }}
+          </div>
+        </div>
+
+      </form>
+
+    </body>
+</html>
