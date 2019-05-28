@@ -26,4 +26,4 @@ The data is inserted to the form in the `GET` in the usual way:
 
 However when the page is displayed the nested FieldList fields (`address_type` and `address`, belonging to `AddressForm`) contain HTML code instead of the expected values.
 
-This can be fixed when rendering the form by using `field.data` instead of `ield()`, but that then causes the validation to fail on the nested form fields.
+This can be fixed when rendering the form by using `field.data` instead of `field()`, but that then causes the validation to fail on the nested form fields.
