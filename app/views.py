@@ -11,11 +11,12 @@ class CandidateRecipients():
     def get_proprietors(self):
         """Return a list of proprietors from among candidate recipients."""
         return [
-            {'name': 'Tom', 'addresses': [
-                {'address': '36 Windsor gardens, London', 'type': 'postal'},
+            {'name': 'Paddington Bear', 'addresses': [
+                {'address': '32 Windsor gardens, London', 'type': 'postal'},
                 {'address': 'foo@bar.com', 'type': 'email'},
                 {'address': 'Example DX address', 'type': 'DX'},
             ]},
+            {'name': 'Tom', 'addresses': []},
             {'name': 'Dick', 'addresses': []},
             {'name': 'Harry', 'addresses': []},
         ]

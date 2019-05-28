@@ -162,6 +162,10 @@ a {
 a:hover {
   color: #0FA0CE; }
 
+.errors {
+    font-size: 1.4rem;
+    color: #FF0000;
+}
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

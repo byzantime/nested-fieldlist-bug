@@ -5,14 +5,13 @@ from wtforms import StringField
 from wtforms import SubmitField
 from wtforms import TextAreaField
 from wtforms import Form as NoCsrfForm
-from wtforms.widgets import HiddenInput
 from wtforms.validators import InputRequired
 from wtforms.validators import ValidationError
 
 
 class AddressForm(NoCsrfForm):
     """The form for an individual recipient address."""
-    address_type = StringField(widget=HiddenInput())
+    address_type = StringField('Address type')
     address = TextAreaField(
         'Address',
         validators=[InputRequired(message='Address required')],
@@ -30,7 +29,7 @@ class AddressForm(NoCsrfForm):
 
 class ProprietorForm(NoCsrfForm):
     """The form for an individual proprietor."""
-    prop_name = StringField()
+    prop_name = StringField('Name')
     addresses = FieldList(FormField(AddressForm))
 
 
